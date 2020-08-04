@@ -30,15 +30,44 @@ function objToSql(ob) {
     }
   }
 }
-
+//create object for turning our functions into queries and handling the error or response of that query
 const orm = {
-  selectAll : (tableName, cb) => {
-    const dbQuery = "SELECT * FROM" + tablename + ";";
+  //render all burgers to pass to handelbars later
+  selectAllBurger : (tableName, cb) => {
+    let dbQuery = "SELECT * FROM" + tableName + ";";
     connection.query (dbQuery, function (err, res) {
       if (err) {
         throw err;
       }
       cb(res);
+    })
+  },
+  //add a new burger
+  insertBurger : (tableName, columns, values, cd) => {
+    //essentially creates this query: Insert into Burger_eats (id, burger_name, devoured) values (portabello, false)
+    let dbQuery = "INSERT INTO " + tableName + 
+    " (" + columns.toString() + ") "+ 
+    "VALUES (" + addQMarks(values.length) + ") ";
+    //log our query
+    console.log(dbQuery);
+    connection.query(dbQuery, values, function (err, res) {
+      if (err) { 
+        throw err;
+      }
+      cb(res);
+    });
+  },
+
+  updateBurger: (tableName, objColVals, condition, cb) => {
+    let dbQuery = "UPDATE "+ tableName + " SET " + objToSql(objColVals) +
+    " WHERE " + condition;
+    console.log(dbQuery);
+
+    connection.query(dbQuery, function(err,res) {
+      if (err){
+        throw err;
+      }
+      cb(res)
     })
   }
 }
