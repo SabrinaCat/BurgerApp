@@ -1,6 +1,6 @@
 const orm = require("../config/orm.js");
 //pass on those orm methods
-const burgers ={
+const burger ={
     selectAllBurger: function (cb) {
         orm.selectAllBurger("burger_eats", function(res) {
             cb(res);
@@ -19,4 +19,4 @@ const burgers ={
     }
 }
 //export our new object named burgers
-module.exports = burgers;
+module.exports = burger;
