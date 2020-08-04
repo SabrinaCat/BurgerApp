@@ -1,11 +1,13 @@
 const connection = require("../config/connection.js");
 
-//adds a ? to all values within a query
+//adds specified number of questions marks 
 function addQMarks(num) {
   let arr = [];
+  //for each index push to the array
   for (let i=0; i< num; i++){
     arr.push('?');
   }
+  //stringify that array
   return arr.toString();
 }
 //function to convert oject key and value pairs to the mysql syntax
@@ -26,6 +28,18 @@ function objToSql(ob) {
       //finally push our new stringified values to our array
       arr.push(key + '=' + value);
     }
+  }
+}
+
+const orm = {
+  selectAll : (tableName, cb) => {
+    const dbQuery = "SELECT * FROM" + tablename + ";";
+    connection.query (dbQuery, function (err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    })
   }
 }
   
