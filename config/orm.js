@@ -43,7 +43,7 @@ const orm = {
     })
   },
   //add a new burger
-  insertBurger : function (tableName, columns, values, cb) {
+  createBurger : function (tableName, columns, values, cb) {
     //essentially creates this query: Insert into Burger_eats (id, burger_name, devoured) values (portabello, false)
     let dbQuery = "INSERT INTO " + tableName + 
     " (" + columns.toString() + ") "+ 
