@@ -33,7 +33,7 @@ function objToSql(ob) {
 //create object for turning our functions into queries and handling the error or response of that query
 const orm = {
   //render all burgers to pass to handelbars later
-  selectAllBurger : (tableName, cb) => {
+  selectAllBurger : function (tableName, cb) {
     let dbQuery = "SELECT * FROM" + tableName + ";";
     connection.query (dbQuery, function (err, res) {
       if (err) {
@@ -43,7 +43,7 @@ const orm = {
     })
   },
   //add a new burger
-  insertBurger : (tableName, columns, values, cd) => {
+  insertBurger : function (tableName, columns, values, cb) {
     //essentially creates this query: Insert into Burger_eats (id, burger_name, devoured) values (portabello, false)
     let dbQuery = "INSERT INTO " + tableName + 
     " (" + columns.toString() + ") "+ 
@@ -58,7 +58,7 @@ const orm = {
     });
   },
 
-  updateBurger: (tableName, objColVals, condition, cb) => {
+  updateBurger: function (tableName, objColVals, condition, cb) {
     let dbQuery = "UPDATE "+ tableName + " SET " + objToSql(objColVals) +
     " WHERE " + condition;
     console.log(dbQuery);
