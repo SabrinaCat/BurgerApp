@@ -1,14 +1,4 @@
 
-
-<h2>Burgers People Loved!</h2>
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    {{burgers/burger-block devoured=false}}
-    {{/if}}
-    {{/each}}
-</ul>
-
 <div class="container">
 
     <div class="jumbotron">
@@ -49,3 +39,23 @@
                 </div>
             </div>
         </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="rightside"><strong>Burgers people Loved!</strong>
+                    <p>These Burgers have been devoured already.</p>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+     
