@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.static("public"));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 //set main as the background layout and 
 //index will contain dynamically created data
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));

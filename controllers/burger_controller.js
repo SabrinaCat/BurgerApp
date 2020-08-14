@@ -15,15 +15,15 @@ router.get("/", function(req, res) {
     res.render("index", hbsObject);
   });
 });
-//this route will POST using our insertBurger function
-router.post("/api/burgers", function (req, res){
+//this route will POST using our CreateBurger function
+router.post("/api/burger_eats", function (req, res){
   burger.createBurger(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result){
 //return id of new burger
     res.json({ id: result.insertId });
   });
 });
 //update burger (how we change devoured from false to true)
-router.put("api/burgers/:id", function (req,res) {
+router.put("api/burger_eats/:id", function (req,res) {
   let condition = "id = " + req.params.id;
   //log the id
   console.log("condition", condition);
