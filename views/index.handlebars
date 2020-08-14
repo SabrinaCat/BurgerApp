@@ -1,30 +1,51 @@
-<h1> Burgers!</h1>
 
-<h2>Would You Eat These Burgers?</h2>
-
-<ul>
-    {{#each Burgers}}
-    {{#unless devoured}}
-    {{> burgers/burger-block devoured=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
 
 <h2>Burgers People Loved!</h2>
 <ul>
     {{#each burgers}}
     {{#if devoured}}
-      {{burgers/burger-block devoured=false}}
+    {{burgers/burger-block devoured=false}}
     {{/if}}
     {{/each}}
 </ul>
 
-<h2>What Burger Should We Try Next?</h2>
-<form class="create-form">
-    <div class="form-group">
-        <label for="bur">Burger Name:</label>
-        <input type="text" id="bur" burger_name= "burger_name">
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Order Up</h1>
+        <p>See What Burgers Others Are Eating</p>
         <br>
-        <button type="submit">Add New Burger</button>
+        <h2>Add a new burger</h2>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="bur">Burger Name:</label>
+                    <input type="text" id="newBurger" burger_name="burger_name">
+                    <br>
+                </div>
+                <button type="submit" class="btn btn-success" id="addburger">Submit</button>
+            </form>
+
+        </panel>
     </div>
-</form>
+    <!--Panel for displaying burgers that can be eaten-->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="leftside"><strong>Would You Eat These Burgers?</strong>
+                    <p>Click "Devour" to Eat The Burger</p>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id={{this.id}}
+                            data-newDevoured={{devoured}}>Devour</button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
