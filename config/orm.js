@@ -34,7 +34,7 @@ function objToSql(ob) {
 const orm = {
   //render all burgers to pass to handelbars later
   selectAllBurger : function (tableName, cb) {
-    let dbQuery = "SELECT * FROM" + tableName + ";";
+    let dbQuery = "SELECT * FROM " + tableName + ";";
     connection.query (dbQuery, function (err, res) {
       if (err) {
         throw err;
