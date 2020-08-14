@@ -1,0 +1,46 @@
+.jumbotron {
+  background-image: url("/assets/images/burger.png");
+  background-repeat: no-repeat;
+  background-position:right;
+  background-color: white;
+  background-size: 300px;
+  border-style: solid;
+  border-color: #5c5c5c;
+  color: #000000;
+  margin-top: 3%;
+  
+}
+#newburger {
+  color: #5c5c5c;
+}
+#leftside {
+  background-color: #5c5c5c;
+  color: white;
+  text-align: center;
+  font-size: 1.3em;
+}
+#rightside {
+  background-color: #e49322;
+  color: white;
+  text-align: center;
+  font-size: 1.3em;
+}
+li {
+    padding: 5px;
+    margin: 5px;
+    background: #faebd7;
+  }
+  
+  .label {
+    font-weight: bold;
+  }
+  
+  .create-update-form {
+    padding: 5px;
+    margin: 5px;
+    background: aqua;
+  }
+  
+  .form-group {
+    margin-bottom: 5px;
+  }
