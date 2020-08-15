@@ -1,3 +1,4 @@
+
 //shorthand on ready function
 $(function() {
     //for the add new burger form
@@ -5,11 +6,11 @@ $(function() {
       event.preventDefault();
     //new burger is created with a name and default devoured set to zero(false)
       const newBurger = {
-        burger_name: $("#newburger").val().trim(),
+        burger_name: $("#newBurger").val().trim(),
         devoured: 0
       };
     //Post request to put new burger into db
-      $.ajax("/api/burgers", {
+      $.ajax("/api/burger_eats", {
         type: "POST",
         data: newBurger
       })
@@ -27,25 +28,16 @@ $(function() {
       let devoured = {
         devoured: 1
       };
-      
-      $.ajax("/api/burgers/:" + id, {
+      //find burger by id within db
+      $.ajax("/api/burger_eats/:" + id, {
         type: "PUT",
         data: devoured
-      }).then(function() {
+      })
+      //console.log then reload page
+      .then(function() {
         console.log("Burger devoured");
         location.reload();
       });
     });
-  
-    $(".trashburger").on("click", function(event) {
-      event.preventDefault();
-  
-      var id = $(this).data("id");
-  
-      // Send the DELETE request.
-      $.ajax({
-        type: "DELETE",
-        url: "/api/burgers/" + id
-      }).then(location.reload());
-    });
+
   });
