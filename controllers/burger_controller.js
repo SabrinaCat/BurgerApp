@@ -11,8 +11,8 @@ router.get("/", function(req, res) {
       burgers : data
     };
     console.log(hbsObject);
-    //render later in index.handlebars
-    res.render("index", hbsObject);
+    //render later in main.handlebars
+    res.render("main", hbsObject);
   });
 });
 //this route will POST using our CreateBurger function
