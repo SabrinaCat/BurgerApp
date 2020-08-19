@@ -1,0 +1,61 @@
+
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Order Up</h1>
+        <p>See What Burgers Others Are Eating</p>
+        <br>
+        <h2>Add a new burger</h2>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="bur">Burger Name:</label>
+                    <input type="text" id="newBurger" burger_name="burger_name">
+                    <br>
+                </div>
+                <button type="submit" class="btn btn-success" id="addburger">Submit</button>
+            </form>
+
+        </panel>
+    </div>
+    <!--Panel for displaying burgers that can be eaten-->
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="leftside"><strong>Would You Eat These Burgers?</strong>
+                    <p>Click "Devour" to Eat The Burger</p>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id={{this.id}}
+                            data-newDevoured={{devoured}}>Devour</button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading" id="rightside"><strong>Burgers people Loved!</strong>
+                    <p>These Burgers have been devoured already.</p>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        {{#each burgers}}
+                        {{#if devoured}}
+                        <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+
+
+
+                </div>
+            </div>
+        </div>
+     
