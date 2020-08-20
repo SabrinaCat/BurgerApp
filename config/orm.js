@@ -58,31 +58,37 @@ const orm = {
     });
   },
   //update devoured
-  updateBurger: function (tableName, objColVals, condition, cb) {
-    let dbQuery = "UPDATE "+ tableName + " SET " + objToSql(objColVals) +
-    " WHERE " + condition;
-    console.log(dbQuery);
+  updateBurger: function(table, objColVals, condition, cb) {
+    var queryString = "UPDATE " + table;
 
-    connection.query(dbQuery, function(err,res) {
-      if (err){
-        throw err;
-      }
-      cb(res)
-    })
-  },
- 
-  deleteBurger: function(table, condition, cb) {
-    var dbQuery = "DELETE FROM " + table + " WHERE " + condition;
-    console.log(dbQuery);
+    queryString += " SET ";
+    queryString += objToSql(objColVals);
+    queryString += " WHERE ";
+    queryString += condition;
 
-    connection.query(dbQuery, function(err, res) {
+    console.log(queryString);
+    connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
       }
-      cb(res);
+
+      cb(result);
+    });
+  },
+  deleteBurger: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
     });
   }
-}
+};
   
   
   module.exports = orm;

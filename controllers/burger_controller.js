@@ -23,6 +23,7 @@ console.log(res);
     res.json({ id: result.insertId });
   });
 });
+
 //update burger with PUT (how we change devoured from false to true)
 router.put("api/burger_eats/:id", function (req,res) {
   let condition = "id = " + req.params.id;
@@ -35,11 +36,12 @@ router.put("api/burger_eats/:id", function (req,res) {
     }
     res.status(200).end();
   });
+
   router.delete("/api/burgers/:id", function(req, res) {
     var condition = "id = " + req.params.id;
     console.log("condition", condition);
 
-    burger.deleteOne(condition, function(result) {
+    burger.deleteBurger(condition, function(result) {
       if (result.changedRows === 0) {
         return res.status(404).end();
       } else {
