@@ -22,7 +22,7 @@ $(function() {
     });
     //Devour button has eatburger class and will change devoured to 1 (true)
     $(".eatburger").on("click", function(event) {
-      event.preventDefault();
+      //!!!event.preventDefault();
     //id equal to buttons data field of id (data-id)
       let id = $(this).data("id");
       let devoured = {
@@ -39,5 +39,21 @@ $(function() {
         location.reload();
       });
     });
+    //throw away option if you wouldn't eat that burger
+    $(".trashburger").on("click", function(event) {
+      event.preventDefault();
+  
+      var id = $(this).data("id");
+  
+      // Send the DELETE request.
+      $.ajax({
+        type: "DELETE",
+        url: "/api/burgers/" + id
+      }).then(
+        console.log("gross"),
+        location.reload());
+    });
 
   });
+
+  
