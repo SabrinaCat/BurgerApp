@@ -1,5 +1,7 @@
 const mysql = require("mysql");
+//create a connection variable but leave its value to be decided
 let connection;
+
 if (process.env.JAWSDB_URL){
 connection = mysql.createConnection(process.env.JAWSDB_URL)
  } else { 
@@ -10,6 +12,7 @@ connection = mysql.createConnection(process.env.JAWSDB_URL)
   password: "Sushicat1001",
   database: "burger_db"
 });
+ }
 
 connection.connect(function(err) {
   if (err) {
