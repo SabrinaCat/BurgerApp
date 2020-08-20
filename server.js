@@ -3,9 +3,9 @@ const bodyParser = require("body-parser");
 const exphbs = require("express-handlebars");
 
 const app = express();
-//.env file
+//.env file for protecting database info
 require("dotenv").config();
-
+//first option to use our .env we set up, or default to port 8080
 PORT = process.env.PORT || 8080
 //goes into public folder to grab our front end code
 app.use(express.static("public"));
