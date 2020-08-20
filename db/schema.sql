@@ -5,7 +5,8 @@
 -- use burger_db
 
 create table burger_eats (
-    id int auto_increment not null primary key,
-    burger_name varchar (30) not null,
-    devoured boolean default 0
+    id INT AUTO_INCREMENT NOT NULL,
+    burger_name VARCHAR (30) NOT NULL,
+    devoured BOOLEAN default 0,
+    PRIMARY KEY(id)
 )
