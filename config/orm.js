@@ -32,7 +32,7 @@ function objToSql(ob) {
 }
 //create object for turning our functions into queries and handling the error or response of that query
 const orm = {
-  //render all burgers to pass to handelbars later
+  //render all burgers to pass to main.handlebars later
   selectAllBurger : function (tableName, cb) {
     let dbQuery = "SELECT * FROM " + tableName + ";";
     connection.query (dbQuery, function (err, res) {
@@ -57,7 +57,7 @@ const orm = {
       cb(res);
     });
   },
-
+  //update devoured
   updateBurger: function (tableName, objColVals, condition, cb) {
     let dbQuery = "UPDATE "+ tableName + " SET " + objToSql(objColVals) +
     " WHERE " + condition;
@@ -69,6 +69,18 @@ const orm = {
       }
       cb(res)
     })
+  },
+ 
+  deleteBurger: function(table, condition, cb) {
+    var dbQuery = "DELETE FROM " + table + " WHERE " + condition;
+    console.log(dbQuery);
+
+    connection.query(dbQuery, function(err, res) {
+      if (err) {
+        throw err;
+      }
+      cb(res);
+    });
   }
 }
   
