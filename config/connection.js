@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 //create a connection variable but leave its value to be decided
+const JAWSDB_URL= require('../.env')
 let connection;
 
 if (process.env.JAWSDB_URL){
