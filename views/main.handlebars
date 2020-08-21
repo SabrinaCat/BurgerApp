@@ -31,7 +31,7 @@
                         {{#unless devoured}}
                         <span><strong> {{this.id}} - {{this.burger_name}}</strong></span>
                         <button type="button" class="eatburger btn btn-warning" id="eatbutton" data-id={{this.id}}
-                            data-newDevoured={{devoured}}>Devour</button>
+                            data-newDevoured={{this.devoured}}>Devour</button>
                         <hr>
                         {{/unless}}
                         {{/each}}

@@ -21,23 +21,19 @@ $(function() {
       });
     });
     //Devour button has eatburger class and will change devoured to 1 (true)
-    $(".eatburger").on("click", function(event) {
+    $("#eatbutton").on("click", function(event) {
       //prevent default so we don't reload page before changing devoured state 
       event.preventDefault();
     //id equal to buttons data field of id (data-id)
       let id = $(this).data("id");
-      // CAT EXAMPLE var newSleep = $(this).data("newsleep");
-      // var newSleepState = {
-      //   sleepy: newSleep
-      // };
-      let newdevoured = $(this).data("newdevoured")
-       const devouredState = {
-         devoured: 1
+      
+      let devouredState = {
+        devoured: 1
       };
       //find burger by id within db
       $.ajax("/api/burger_eats/:" + id, {
         type: "PUT",
-        data: devoured
+        data: devouredState
       })
       //console.log then reload page
       .then(function() {
