@@ -12,13 +12,13 @@ const burger ={
         });
     },
     //function UPDATE "burger_eats" SET (burger_name, devoured) WHERE *condition*
-    updateBurger: function (objColVals, condition, cb) {
-        orm.updateBurger("burger_eats", objColVals, condition, function (res){
+    updateBurger: function (devoured, condition, cb) {
+        orm.updateBurger("burger_eats", devoured, condition, function (res){
             cb(res);
         });
     },
-    deleteOne: function(condition, cb) {
-        orm.deleteOne("burgers", condition, function(res) {
+    deleteBurger: function(condition, cb) {
+        orm.deleteBurger("burgers", condition, function(res) {
           cb(res);
         });
       }
