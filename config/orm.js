@@ -58,8 +58,8 @@ const orm = {
     });
   },
   //update devoured
-  updateBurger: function(table, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table;
+  updateBurger: function(tableName, objColVals, condition, cb) {
+    var queryString = "UPDATE " + tableName;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
@@ -75,8 +75,8 @@ const orm = {
       cb(result);
     });
   },
-  deleteBurger: function(table, condition, cb) {
-    var queryString = "DELETE FROM " + table;
+  deleteBurger: function(tableName, condition, cb) {
+    var queryString = "DELETE FROM " + tableName;
     queryString += " WHERE ";
     queryString += condition;
 
