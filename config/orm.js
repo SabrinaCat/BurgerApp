@@ -26,7 +26,7 @@ function objToSql(ob) {
       value = "'" + value + "'";
       }
       //finally push our new stringified values to our array
-      arr.push(key + '=' + value);
+      array.push(key + '=' + value);
     }
   }
 }

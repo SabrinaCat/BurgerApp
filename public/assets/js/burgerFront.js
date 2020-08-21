@@ -31,7 +31,7 @@ $(function() {
         devoured: 1
       };
       //find burger by id within db
-      $.ajax("/api/burger_eats/:" + id, {
+      $.ajax("/api/burger_eats/" + id, {
         type: "PUT",
         data: devouredState
       })

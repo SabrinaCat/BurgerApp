@@ -25,7 +25,7 @@ console.log(res);
 });
 
 //update burger with PUT (how we change devoured from false to true)
-router.put("api/burger_eats/:id", function (req,res) {
+router.put("/api/burger_eats/:id", function (req,res) {
   let condition = "id = " + req.params.id;
   //log the id
   console.log("condition", condition);
